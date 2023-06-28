@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
+import Card from './components/Card';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </div>
         <div className='Board'>
           <h2>Board Title</h2>
+          <Card/>
         </div>
       </main>
       </div>

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.Card {
+    display: flex;
+    width: 320px;
+    padding: 32px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(33, 36, 41, 0.05);
+}
+
+.Button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    width: 256px;
+    height: 48px;
+}
+
+.Likes-container {
+    display: flex;
+    width: 24px;
+    height: 48px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h4 {
+    color: var(--mono-black, #252525);
+    font-size: 21px;
+    font-family: 'Roboto', sans-serif;
+}
+
+h5 {
+    color: var(--mono-black, #252525);
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+}
+
+button {
+    all: unset;
+    display: flex;
+    padding: 15px 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: var(--primary-purple, #5E48E8);
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+img {
+    height: 24px;
+    width: 24px;
+}
+
+.star {
+    color:#5E48E8;
+}
+
+.star:hover {
+    color:#5E48E84A
+}

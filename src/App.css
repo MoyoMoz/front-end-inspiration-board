@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .App {
-  text-align: center;
   color: var(--mono-black, #252525);
 }
 
 .App-header {
+  text-align: center;
   background-color: white;
   min-height: 130px;
   display: flex;
@@ -51,6 +51,7 @@ h3 {
 }
 
 .Board {
+  text-align: center;
   width: 906px;
   height: 893px;
   flex-shrink: 0;
