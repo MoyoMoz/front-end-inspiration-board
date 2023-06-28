@@ -1,38 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  color: var(--mono-black, #252525);
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: white;
+  min-height: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--mono-gray-2, #E1E1E1);
 }
 
-.App-link {
-  color: #61dafb;
+main {
+  display: flex;
+  flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  font-size: 50px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+h2 {
+  color: var(--mono-black, #252525);
+  font-size: 38px;
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+h3 {
+  color: var(--mono-black, #252525);
+  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.Form-list {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 17px 90px;
+}
+
+.Board {
+  width: 906px;
+  height: 893px;
+  flex-shrink: 0;
+  background-color: #F9F9F9;
 }
