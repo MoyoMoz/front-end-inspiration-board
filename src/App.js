@@ -4,8 +4,29 @@ import axios from 'axios';
 import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
 import Card from './components/Card';
+import { useState, useEffect } from "react";
 
 function App() {
+  const [boardsData, setBoardsData] = useState([]);
+
+  const API =
+    "https://backend-inspo-board.onrender.com/boards";
+
+  const getAllBoards = () => {
+    axios
+      .get(API)
+      .then((result) => {
+        setBoardsData(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllBoards();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
