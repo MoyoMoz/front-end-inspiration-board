@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 
 function NewBoardForm(props) {
   const [title, setTitle] = useState('');
@@ -8,14 +8,14 @@ function NewBoardForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('http://127.0.0.1:5000/boards', { title, owner })
-      .then((response) => {
-        console.log(response);
-        props.createNewBoard(response.data);
-      })
-      .catch((error) => {
-        console.error("Error creating new board: ", error);
-      });
+    //axios.post('http://127.0.0.1:5000/boards', { title, owner })
+      // .then((response) => {
+      //   console.log(response);
+        props.createNewBoard(title, owner);
+      // })
+      // .catch((error) => {
+      //   console.error("Error creating new board: ", error);
+      // });
 
     setTitle('');
     setOwner('');
