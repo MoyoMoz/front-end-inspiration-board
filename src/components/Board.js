@@ -2,7 +2,7 @@ import React from 'react';
 import './Board.css';
 import Card from './Card';
 
-const Board = ( { cards }) => {
+const Board = ( { cards, boardId, updateLikes, removeCard }) => {
     let cardComponents = '';
     if ( cards === undefined) {
         return (cardComponents);
@@ -14,6 +14,9 @@ const Board = ( { cards }) => {
                 id={card.id}
                 message={card.message}
                 likes={card.likes}
+                boardId={boardId}
+                updateLikes={updateLikes}
+                removeCard={removeCard}
             />
         );
         });

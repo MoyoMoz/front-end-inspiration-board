@@ -10,12 +10,13 @@ import { useState, useEffect } from "react";
 function App() {
   const [boardsData, setBoardsData] = useState([]);
 
-  const API =
-    "https://backend-inspo-board.onrender.com/boards";
+  const APIboard = "https://backend-inspo-board.onrender.com/boards";
+  
+  const APIcard = "https://backend-inspo-board.onrender.com/cards";
 
   const getAllBoards = () => {
     axios
-      .get(API)
+      .get(APIboard)
       .then((result) => {
         setBoardsData(result.data);
       })
@@ -24,17 +25,32 @@ function App() {
       });
   };
 
-  useEffect(() => {
-    getAllBoards();
-  }, []);
+  useEffect(() => {getAllBoards();}, []);
 
-  const [selectedBoard, setSelectedBoard] = useState('');
+  const [selectedBoard, setSelectedBoard] = useState([]);
+  
   const onNewSelect = (event) => {
-      setSelectedBoard(event.target.id);
-  };
+    console.log(event.target.id);
+    const selectedBoardData = boardsData.find((board) => {
+        return (board.id.toString() === event.target.id);
+      });
+    // let selectedBoardData = [];
+    // for (let board of boardsData) {
+    //   if (event.target.id === board.id.toString) {
+    //     selectedBoardData = {...board};
+    //     console.log(selectedBoardData);
+    //   };  
+      console.log(selectedBoardData);
+      setSelectedBoard(selectedBoardData);
+    };
+      
+
+    // selectedBoardData = boardsData.find((board) => {
+    //   return (board.id.toString() === selectedBoard);
+    // });
 
   const createNewBoard = (title, owner) => {
-    axios.post(API, {title: title, owner: owner})
+    axios.post(APIboard, {title: title, owner: owner})
       .then((result) => {
         getAllBoards();
       })
@@ -43,11 +59,57 @@ function App() {
       })
   };
 
-  const selectedBoardData = boardsData.find((board) => {
-    return (board.id.toString() === selectedBoard);
-  })
+  const updateLikes = (id, likes) => {
+    likes += 1;
+    axios.patch(`${APIcard}/${id}`, { likes: likes})
+    .then((result) => {
+        const newCards = [];
+        for (let card of selectedBoard.cards) {
+          if (card.id === id) {
+            card.likes = likes;
+            newCards.push({...card});
+          } else {
+            newCards.push({...card});
+          }
+        }
+        //reconstruct board w/ new cards 
+        const newBoard = {...selectedBoard, cards: newCards};
+        setSelectedBoard(newBoard);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+};
 
-  //console.log(selectedBoardData);
+// const getOneBoardsCards = (id) => {
+//   axios
+//     .get(`${APIboard}/${id}/cards`)
+//     .then((result) => {
+//       //setBoardsData(result.data);
+//       console.log(result.data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+
+const removeCard = (boardId, id) => {
+    axios.delete(`${APIcard}/${id}`)
+    .then((result) => {
+      const newCards = [];
+      for (let card of selectedBoard.cards) {
+        if (card.id !== id) {
+          newCards.push(card);
+        }
+      }
+        const newBoard = {...selectedBoard, cards: newCards};
+        setSelectedBoard(newBoard);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+};
+
 
   return (
     <div className="App">
@@ -57,15 +119,15 @@ function App() {
       <main>
         <div className="Form-list">
           <h2>Select a Board</h2>
-          <div><SelectBoardForm data={boardsData} selectedBoard={selectedBoard} onChange={onNewSelect}/></div>
+          <div><SelectBoardForm data={boardsData} selectedBoardId={selectedBoard.id} onChange={onNewSelect}/></div>
           <h3>Create a New Board</h3>
           <div><NewBoardForm createNewBoard={createNewBoard}/></div>
           <h3>Create a New Card</h3>
           <div><NewCardForm /></div>
         </div>
         <div className='Board'>
-          <h2>{selectedBoardData?.title}</h2>
-          <Board cards={selectedBoardData?.cards} />
+          <h2>{selectedBoard?.title}</h2>
+          <Board cards={selectedBoard?.cards} boardId={selectedBoard?.id} updateLikes={updateLikes} removeCard={removeCard}/>
         </div>
       </main>
       </div>

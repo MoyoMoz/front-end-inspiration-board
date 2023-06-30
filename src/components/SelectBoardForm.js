@@ -3,7 +3,7 @@ import './SelectBoardForm.css';
 const SelectBoardForm = (props) => {
 
     const boardComponents = props.data.map((board) => {
-        //console.log(props.selectedBoard, board.id, props.selectedBoard === board.id.toString());
+        //console.log(props.selectedBoardId, board.id, props.selectedBoard.id === board.id.toString());
         return (
             <div>
             <label>
@@ -14,7 +14,7 @@ const SelectBoardForm = (props) => {
                 id={board.id}
                 value={board.title}
                 onChange={props.onChange}
-                checked={props.selectedBoard === board.id.toString()}
+                checked={props.selectedBoardId === board.id}
             />{board.title}</label></div>
         );
     });
