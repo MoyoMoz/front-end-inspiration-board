@@ -20,7 +20,7 @@ const Board = ( { cards }) => {
     }
 
     return (
-        <div>
+        <div className="board">
             {cardComponents}
         </div>
     );

@@ -36,7 +36,7 @@ const Card = ({ id, message, likes}) => {
             <h4>{message}</h4>
             <div className='Button-row'>
                 <div className='Likes-container'>
-                <span onClick={onLikeButtonClick}>{icon}</span>
+                <span className='star' onClick={onLikeButtonClick}>{icon}</span>
                     <h5>{likes}</h5>
                 </div>
                 <button onClick={onDeleteButtonClick}>Delete</button>
