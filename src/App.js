@@ -30,24 +30,12 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState([]);
   
   const onNewSelect = (event) => {
-    console.log(event.target.id);
     const selectedBoardData = boardsData.find((board) => {
         return (board.id.toString() === event.target.id);
       });
-    // let selectedBoardData = [];
-    // for (let board of boardsData) {
-    //   if (event.target.id === board.id.toString) {
-    //     selectedBoardData = {...board};
-    //     console.log(selectedBoardData);
-    //   };  
-      console.log(selectedBoardData);
       setSelectedBoard(selectedBoardData);
     };
       
-
-    // selectedBoardData = boardsData.find((board) => {
-    //   return (board.id.toString() === selectedBoard);
-    // });
 
   const createNewBoard = (title, owner) => {
     axios.post(APIboard, {title: title, owner: owner})
@@ -72,7 +60,6 @@ function App() {
             newCards.push({...card});
           }
         }
-        //reconstruct board w/ new cards 
         const newBoard = {...selectedBoard, cards: newCards};
         setSelectedBoard(newBoard);
     })
@@ -81,19 +68,7 @@ function App() {
     })
 };
 
-// const getOneBoardsCards = (id) => {
-//   axios
-//     .get(`${APIboard}/${id}/cards`)
-//     .then((result) => {
-//       //setBoardsData(result.data);
-//       console.log(result.data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
-const removeCard = (boardId, id) => {
+const removeCard = (id) => {
     axios.delete(`${APIcard}/${id}`)
     .then((result) => {
       const newCards = [];
@@ -127,7 +102,7 @@ const removeCard = (boardId, id) => {
         </div>
         <div className='Board'>
           <h2>{selectedBoard?.title}</h2>
-          <Board cards={selectedBoard?.cards} boardId={selectedBoard?.id} updateLikes={updateLikes} removeCard={removeCard}/>
+          <Board cards={selectedBoard?.cards} updateLikes={updateLikes} removeCard={removeCard}/>
         </div>
       </main>
       </div>
