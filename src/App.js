@@ -47,9 +47,25 @@ function App() {
       })
   };
 
+  const createCard = (boardId, message) => {
+    axios.post(`${APIboard}/${boardId}`, {message: message})
+    .then((result) => {
+      const newCard = {board:result.data.board, id:result.data.id, 
+                        message:result.data.message, likes:result.data.likes};
+      console.log(newCard);
+      const newBoardData = {...selectedBoard};
+      newBoardData.cards.push(newCard);
+      setSelectedBoard(newBoardData)
+       })
+    .catch((err) => {
+      console.log(err);
+    })  
+    };
+ 
+
   const updateLikes = (id, likes) => {
     likes += 1;
-    axios.patch(`${APIcard}/${id}`, { likes: likes})
+    axios.patch(`${APIcard}/${id}`, {likes: likes})
     .then((result) => {
         const newCards = [];
         for (let card of selectedBoard.cards) {
@@ -98,7 +114,7 @@ const removeCard = (id) => {
           <h3>Create a New Board</h3>
           <div><NewBoardForm createNewBoard={createNewBoard}/></div>
           <h3>Create a New Card</h3>
-          <div><NewCardForm /></div>
+          <div><NewCardForm boardId={selectedBoard?.id} createCard={createCard}/></div>
         </div>
         <div className='Board'>
           <h2>{selectedBoard?.title}</h2>

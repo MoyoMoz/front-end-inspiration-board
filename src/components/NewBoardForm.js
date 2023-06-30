@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
-//import axios from 'axios';
 
-function NewBoardForm(props) {
+function NewBoardForm({ createNewBoard }) {
   const [title, setTitle] = useState('');
   const [owner, setOwner] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    //axios.post('http://127.0.0.1:5000/boards', { title, owner })
-      // .then((response) => {
-      //   console.log(response);
-        props.createNewBoard(title, owner);
-      // })
-      // .catch((error) => {
-      //   console.error("Error creating new board: ", error);
-      // });
+    createNewBoard(title, owner);
 
     setTitle('');
     setOwner('');
