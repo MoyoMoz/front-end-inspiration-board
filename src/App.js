@@ -24,9 +24,9 @@ function App() {
         console.log(err);
       });
   };
-
+  
   useEffect(() => {getAllBoards();}, []);
-
+  
   const [selectedBoard, setSelectedBoard] = useState([]);
   
   const onNewSelect = (event) => {
@@ -50,8 +50,8 @@ function App() {
   const createCard = (boardId, message) => {
     axios.post(`${APIboard}/${boardId}`, {message: message})
     .then((result) => {
-      const newCard = {board:result.data.board, id:result.data.id, 
-                        message:result.data.message, likes:result.data.likes};
+      const newCard = {board:result.data.card.board, id:result.data.card.id, 
+                        message:result.data.card.message, likes:result.data.card.likes};
       console.log(newCard);
       const newBoardData = {...selectedBoard};
       newBoardData.cards.push(newCard);
@@ -61,7 +61,6 @@ function App() {
       console.log(err);
     })  
     };
- 
 
   const updateLikes = (id, likes) => {
     likes += 1;
