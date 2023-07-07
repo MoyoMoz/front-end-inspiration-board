@@ -8,21 +8,26 @@ function NewCardForm( {createCard, boardId} ) {
   const validateForm = () => {
     if (message.length > 40 ) {
       setError("Input cannot be longer than 40 characters");
+      return false;
     } else if (message.length === 0) {
       setError("Input cannot be empty");
+      return false;
     } else {
       setMessage(message);
+      return true;
     }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    validateForm();
-    if (error.length > 1) {
+    const isValid = validateForm();
+    if (isValid === true) {
       createCard(boardId, message);
       setMessage('');
       setError('');
-    };
+    } else {
+      return;
+    }
   };
 
   return (

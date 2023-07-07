@@ -5,22 +5,44 @@ function NewBoardForm({ createNewBoard }) {
   const [title, setTitle] = useState('');
   const [owner, setOwner] = useState('');
   const [showForm, setShowForm] = useState(true);
+  const [error, setError] = useState('');
+
+  const validateInput = () => {
+    if (title.length === 0 || owner.length === 0) {
+      setError("Input cannot be empty");
+      return false;
+    } else {
+      return true;
+    }
+    };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createNewBoard(title, owner);
-
-    setTitle('');
-    setOwner('');
+    const isValid = validateInput();
+    if (isValid === true) {
+      createNewBoard(title, owner);
+      setTitle('');
+      setOwner('');
+      setError('');
+    } else {
+      return;
+    };
   };
 
+  const onSlider = (event) => {
+    setShowForm(!showForm);
+    setError('');
+  };
 
+//{(event) => setShowForm(!showForm)}
 
   return (
     <form onSubmit={handleSubmit}>
+      <span className="error">{error}</span>
       <div>
       <label className="toggle">
-        <input type="checkbox"  onChange={(event) => setShowForm(!showForm)}/>
+        <input type="checkbox"  onChange={onSlider}/>
         <span className="slider"></span>
         <span className="labels" data-on="SHOW" data-off="HIDE"></span>
       </label>
