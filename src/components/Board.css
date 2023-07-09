@@ -1,8 +1,6 @@
 .board {
-    display: inline-flex;
-    height: 489px;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 906px;
     gap: 10px;
-    flex-shrink: 0;
 }

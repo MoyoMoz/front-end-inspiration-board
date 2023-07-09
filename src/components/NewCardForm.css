@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
 .error {
     color: red;
+}
+
+.Form-label {
+    color: var(--mono-gray-3, #B5B5B5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+input[type=text] {
+    stroke-width: 1px;
+    stroke: var(--mono-gray-2, #E1E1E1);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input[type=submit] {
+    all: unset;
+    display: flex;
+    padding: 15px 30px;
+    flex-direction: column;
+    margin-top: 34px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #E85B81;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+input[type=submit]:hover {
+    background: #E85B814A;
 }

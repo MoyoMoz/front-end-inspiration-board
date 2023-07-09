@@ -32,10 +32,10 @@ function NewCardForm( {createCard, boardId} ) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Message:
+      <label className='Form-label'>
+        Message
         <span className="error">{error}</span>
-        <input type="text" value={message} onChange={(event) => setMessage(event.target.value)} />
+        <div><input type="text" value={message} onChange={(event) => setMessage(event.target.value)} /></div>
       </label>
       <input type="submit" value="Create Card" />
     </form>

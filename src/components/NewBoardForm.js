@@ -48,15 +48,15 @@ function NewBoardForm({ createNewBoard }) {
       </label>
       </div>
       <div className={showForm.toString()}>
-      <label>
-        Title:
-        <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
+      <label className='Form-label'>
+        Title
+        <div><input type="text" value={title} onChange={(event) => setTitle(event.target.value)} /> </div>
       </label>
       </div>
       <div className={showForm.toString()}>
-      <label>
-        Owner:
-        <input type="text" value={owner} onChange={(event) => setOwner(event.target.value)} />
+      <label className='Form-label'>
+        Owner
+        <div><input type="text" value={owner} onChange={(event) => setOwner(event.target.value)} /></div>
       </label>
       <input type="submit" value="Create Board" />
       </div>

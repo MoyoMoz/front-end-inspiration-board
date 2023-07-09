@@ -65,6 +65,10 @@ button {
     line-height: 18px;
 }
 
+button:hover {
+    background: #5E48E84A;
+}
+
 img {
     height: 24px;
     width: 24px;
