@@ -19,6 +19,13 @@ input[type=text] {
     stroke: var(--mono-gray-2, #E1E1E1);
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: 8px;
+    position: relative;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    top: 0px;
+    overflow: visible;
 }
 
 input[type=submit] {
