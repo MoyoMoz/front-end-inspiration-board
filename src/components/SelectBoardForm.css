@@ -16,3 +16,7 @@
     width: 28px;
     height: 28px;
 }
+
+input[type='radio']:checked:after {
+    color: #E85B81;
+}

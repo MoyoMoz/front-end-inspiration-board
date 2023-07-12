@@ -52,7 +52,6 @@ function App() {
     .then((result) => {
       const newCard = {board:result.data.card.board, id:result.data.card.id, 
                         message:result.data.card.message, likes:result.data.card.likes};
-      console.log(newCard);
       const newBoardData = {...selectedBoard};
       newBoardData.cards.push(newCard);
       setSelectedBoard(newBoardData)

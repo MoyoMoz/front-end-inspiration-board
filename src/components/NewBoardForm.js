@@ -35,8 +35,6 @@ function NewBoardForm({ createNewBoard }) {
     setError('');
   };
 
-//{(event) => setShowForm(!showForm)}
-
   return (
     <form onSubmit={handleSubmit}>
       <span className="error">{error}</span>
