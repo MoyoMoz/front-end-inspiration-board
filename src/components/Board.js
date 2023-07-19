@@ -3,6 +3,7 @@ import './Board.css';
 import Card from './Card';
 
 const Board = ( { cards, updateLikes, removeCard }) => {
+
     let cardComponents = '';
     if ( cards === undefined) {
         return (cardComponents);

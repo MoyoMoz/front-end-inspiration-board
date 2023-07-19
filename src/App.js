@@ -82,6 +82,22 @@ function App() {
     })
 };
 
+const handleSortAZ = () => {
+  const sortedCards = [...selectedBoard.cards].sort((a,b) => {
+    return a.message > b.message ? 1 : -1;
+  })
+  const newBoard = {...selectedBoard, cards: sortedCards};
+  setSelectedBoard(newBoard);
+};
+
+const handleSortZA = () => {
+  const sortedCards = [...selectedBoard.cards].sort((a,b) => {
+    return a.message > b.message ? -1 : 1;
+  })
+  const newBoard = {...selectedBoard, cards: sortedCards};
+  setSelectedBoard(newBoard);
+};
+
 const removeCard = (id) => {
     axios.delete(`${APIcard}/${id}`)
     .then((result) => {
@@ -108,7 +124,7 @@ const removeCard = (id) => {
       <main>
         <div className="Form-list">
           <h2>Select a Board</h2>
-          <div><SelectBoardForm data={boardsData} selectedBoardId={selectedBoard.id} onChange={onNewSelect}/></div>
+          <div><SelectBoardForm data={boardsData} selectedBoardId={selectedBoard.id} onChange={onNewSelect} sortAZ={handleSortAZ} sortZA={handleSortZA}/></div>
           <h3>Create a New Board</h3>
           <div><NewBoardForm createNewBoard={createNewBoard}/></div>
           <h3>Create a New Card</h3>
